@@ -1,2 +1,2 @@
 # gcp-app
-gcp project
+GKE project
