@@ -1,16 +1,13 @@
 variable "sa_id" {
   type    = string
-  default = "service account"
 }
 
 variable "sa_dn" {
   type    = string
-  default = "Service Account for cluster"
 }
 
 variable "cluster_name" {
   type    = string
-  default = "cluster-123"
 }
 
 variable "cluster_location" {
