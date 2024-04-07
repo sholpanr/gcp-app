@@ -4,7 +4,7 @@ provider "google" {
 }
 
 module "gke-cluster" {
-  source = "git@github.com:sholpanr/tf-modules.git"
+  source = "git@github.com:sholpanr/tf-modules.git//gke"
   sa_id            = "gke-cluster-1234"
   sa_dn            = "Service Account for cluster"
   cluster_name     = "cluster-1234"
