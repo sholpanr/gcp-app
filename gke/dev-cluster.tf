@@ -1,5 +1,5 @@
 module "dev-cluster" {
-  source = "git@github.com:sholpanr/tf-modules.git//gke"
+  source           = "git@github.com:sholpanr/tf-modules.git//gke"
   sa_id            = "dev-cluster-1"
   sa_dn            = "Service Account for Dev cluster"
   cluster_name     = "dev-cluster"

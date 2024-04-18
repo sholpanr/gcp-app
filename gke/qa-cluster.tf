@@ -1,6 +1,6 @@
 
 module "qa-cluster" {
-  source = "git@github.com:sholpanr/tf-modules.git//gke"
+  source           = "git@github.com:sholpanr/tf-modules.git//gke"
   sa_id            = "qa-cluster-1"
   sa_dn            = "Service Account for QA cluster"
   cluster_name     = "qa-cluster"
