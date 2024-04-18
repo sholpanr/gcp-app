@@ -7,6 +7,9 @@ on:
 jobs:
   terraform:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: gke
     
     steps:
       - name: Checkout code
