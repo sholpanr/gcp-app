@@ -16,7 +16,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1
       
       - name: Configure GCP credentials
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@v0.2.0
         with:
           service_account_email: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
           service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
