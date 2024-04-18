@@ -1,0 +1,46 @@
+name: Create GCP Cluster
+
+on:
+  workflow_dispatch:
+    
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+      
+      - name: Configure GCP credentials
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          service_account_email: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          export_default_credentials: true
+          bucket-tf-state: ${{ secrets.BUCKET_TF_STATE }}
+          google_project: utopian-planet-418522
+          google_region: us-central1 
+
+      - name: Terraform fmt
+        run: terraform fmt -check
+        continue-on-error: false
+
+      - name: Terraform Init
+        run: terraform init
+        continue-on-error: false
+
+      - name: Terraform Validate
+        run: terraform validate
+        continue-on-error: false
+      
+      - name: Terraform Plan
+        run: terraform plan -no-color -input=false -out planfile
+        continue-on-error: false
+      
+      - name: Terraform Apply
+        if: success()
+        run: terraform apply -auto-approve
